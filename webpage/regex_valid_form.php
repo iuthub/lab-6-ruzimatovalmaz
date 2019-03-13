@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 	$text=$_POST["text"];
 	$replaceText=$_POST["replaceText"];
 
+
 	$replacedText=preg_replace($pattern, $replaceText, $text);
 
 	if(preg_match($pattern, $text)) {
@@ -19,18 +20,18 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 					} else {
 						$match="Does not match!";
 					}
-}
-
+}	
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Valid Form</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
 	<form action="regex_valid_form.php" method="post">
 		<dl>
 			<dt>Pattern</dt>
@@ -51,6 +52,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 			<dt>&nbsp;</dt>
 			<dd><input type="submit" value="Check"></dd>
 		</dl>
+		<div>
+			<p align="center"><?php 
+			$text = str_replace(, '', $text);
+			echo $text;
+			 ?></p>
+		</div>
 
 	</form>
 </body>
